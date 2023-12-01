@@ -1,4 +1,4 @@
-import { Card, Form, Input, Button } from 'antd'
+import { Card, Form, Input, Button, message } from 'antd'
 import { userLogin } from '@/store/modules/auth';
 import { useDispatch } from'react-redux'
 import { AppDispatch } from '@/types/store';
@@ -9,12 +9,17 @@ const Login = () => {
     username: string;
     password: string;
   };
+  
+  const navigate = useNavigate()
 
+  // 防止 userLogin(values) ts 报错
   const useAppDispatch = () => useDispatch<AppDispatch>();
   const dispatch = useAppDispatch()
 
-  const onLogin = (values: FieldType) => {
-    dispatch(userLogin(values))
+  const onLogin = async (values: FieldType) => {
+    await dispatch(userLogin(values))
+    navigate('/')
+    message.success('登录成功')
   }
 
   const onLoginFailed = () => {

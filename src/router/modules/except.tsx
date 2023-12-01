@@ -1,4 +1,3 @@
-import { lazy } from 'react'
 import { lazyLoad } from '@/utils/router'
 
 const Login = lazy(() => import('@/views/Login/index'))
