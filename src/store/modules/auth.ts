@@ -2,15 +2,17 @@ import { createSlice } from "@reduxjs/toolkit"
 import { loginData } from "@/apis/auth/type"
 import { reqLogin } from '@/apis/auth'
 import { AppDispatch, RootState } from "@/types/store"
+import { getAuthItem, setAuthItem } from "@/utils/auth"
 
 const authStore = createSlice({
   name: 'auth',
   initialState: {
-    token: ''
+    token: getAuthItem('token') || ''
   },
   reducers: {
     setToken(state, action) {
-      state.token = action.payload
+      state.token = action.payload.token
+      setAuthItem(action.payload, action.payload.expire)
     }
   }
 })
@@ -18,7 +20,7 @@ const authStore = createSlice({
 export const userLogin = (data: loginData) => {
   return (dispatch: AppDispatch) => {
     reqLogin(data).then(res => {
-      dispatch(setToken(res.data.token))
+      dispatch(setToken(res.data))
     })
   }
 }
