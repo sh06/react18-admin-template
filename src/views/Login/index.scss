@@ -1,0 +1,13 @@
+.login {
+    width: 100%;
+    height: 100hv;
+    
+    &-container {
+        width: 440px;
+        height: 190px;
+        position: absolute;
+        left: 50%;
+        top: 35%;
+        margin-left: -220px;
+    }
+}
