@@ -7,11 +7,20 @@ import { getAuthItem, setAuthItem } from "@/utils/auth"
 const authStore = createSlice({
   name: 'auth',
   initialState: {
-    token: getAuthItem('token') || ''
+    token     : getAuthItem('token') || '',
+    username  : getAuthItem('username') || '',
+    user_id   : getAuthItem('user_id') || '',
+    menu      : getAuthItem('menu') || [],
+    permission: getAuthItem('permission') || [],
   },
   reducers: {
     setToken(state, action) {
-      state.token = action.payload.token
+      state.token      = action.payload.token
+      state.username   = action.payload.username
+      state.user_id    = action.payload.user_id
+      state.menu       = action.payload.menu
+      state.permission = action.payload.permission
+
       setAuthItem(action.payload, action.payload.expire)
     }
   }
