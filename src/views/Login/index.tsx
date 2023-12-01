@@ -1,6 +1,7 @@
 import { Card, Form, Input, Button } from 'antd'
-import { reqLogin } from '@/apis/auth'
-
+import { userLogin } from '@/store/modules/auth';
+import { useDispatch } from'react-redux'
+import { AppDispatch } from '@/types/store';
 import './index.scss'
 
 const Login = () => {
@@ -9,10 +10,11 @@ const Login = () => {
     password: string;
   };
 
+  const useAppDispatch = () => useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch()
+
   const onLogin = (values: FieldType) => {
-    reqLogin(values).then(res => {
-      console.log(res)
-    })
+    dispatch(userLogin(values))
   }
 
   const onLoginFailed = () => {
