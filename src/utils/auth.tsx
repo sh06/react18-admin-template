@@ -20,3 +20,7 @@ export function getAuthItem(key: string) {
 
   return value
 }
+
+export function getAuthToken() {
+  return getAuthItem('token')
+}
