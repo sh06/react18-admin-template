@@ -7,11 +7,13 @@ import ContentContainer from './content'
 import styles from './index.module.scss'
 
 const LayoutContainer: React.FC = () => {
+  const [collapsed, setCollapsed] = useState(true);
+
   return (
     <Layout className={styles.layout} >
-      <SidebarContainer />
+      <SidebarContainer collapsed={collapsed} />
       <Layout className="site-layout">
-        <HeaderContainer />
+        <HeaderContainer collapsed={collapsed} setCollapsed={setCollapsed} />
         <ContentContainer />
       </Layout>
     </Layout>

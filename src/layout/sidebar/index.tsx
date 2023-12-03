@@ -7,8 +7,6 @@ import styles from './index.module.scss'
 import React from 'react'
 import {
   AppstoreOutlined,
-  ContainerOutlined,
-  DesktopOutlined,
   MailOutlined,
   PieChartOutlined,
 } from '@ant-design/icons'
@@ -48,9 +46,15 @@ const items: MenuItem[] = [
   ]),
 ];
 
-const SidebarContainer = () => {
+type SidebarProps = {
+  collapsed: boolean
+}
+
+const SidebarContainer = ({
+  collapsed
+}: SidebarProps) => {
   return (
-    <Sider className={styles.sidebar}>
+    <Sider className={[styles.sidebar, collapsed ? null : styles.sidebarOpen ].join(' ')} collapsed={collapsed}>
       <Logo />
       <Menu
         className={styles.sidebarMenu}
