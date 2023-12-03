@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { loginData } from "@/apis/auth/type"
-import { reqLogin } from '@/apis/auth'
-import { AppDispatch, RootState } from "@/types/store"
-import { getAuthItem, setAuthItem } from "@/utils/auth"
+import { clearAuth, getAuthItem, setAuthItem } from "@/utils/auth"
+import { RootState } from "@/types/store"
 
 const authStore = createSlice({
   name: 'auth',
@@ -22,17 +20,17 @@ const authStore = createSlice({
       state.permission = action.payload.permission
 
       setAuthItem(action.payload, action.payload.expire)
+    },
+    clearToken(state) {
+      state.token      = ''
+      state.username   = ''
+      state.user_id    = ''
+      state.menu       = []
+      state.permission = []
+      clearAuth()
     }
   }
 })
-
-export const userLogin = (data: loginData) => {
-  return (dispatch: AppDispatch) => {
-    reqLogin(data).then(res => {
-      dispatch(setToken(res.data))
-    })
-  }
-}
 
 export const selectToken = (state: RootState) => state.auth.token
 export const { setToken } = authStore.actions

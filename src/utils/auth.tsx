@@ -28,3 +28,7 @@ export function getAuthToken() {
 export function getAuthUserName() {
   return getAuthItem('username')
 }
+
+export function clearAuth() {
+  Cookies.remove(cookieKey)
+}

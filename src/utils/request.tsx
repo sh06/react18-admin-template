@@ -1,5 +1,7 @@
 import axios from 'axios'
-import { getAuthToken } from '@/utils/auth'
+import { message } from 'antd'
+import router from '@/router/index'
+import store from '@/store'
 
 const http = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
@@ -18,7 +20,7 @@ http.interceptors.request.use((config) => {
     return config
   } else {
     return new Promise((resolve) => {
-      const token = getAuthToken()
+      const token = store.getState().auth.token
 
       if (token) {
         config.headers['token'] = token
@@ -31,9 +33,24 @@ http.interceptors.request.use((config) => {
 /** 响应拦截器 */
 http.interceptors.response.use(
   (response) => {
-    return response.data
+    if (response.data.code == 1) {
+      return response.data
+    } else {
+      message.error(response.data.msg)
+      return Promise.reject(response.data.msg)
+    }
   },
   (error) => {
+    const httpCode = error.response.status
+
+    if (httpCode == 401) {
+      store.dispatch({ type: "auth/clearToken" })
+      error.message = '请重新登录'
+      router.navigate('/login')
+    } else {
+      error.message = '请求错误，请稍后再试。'
+    }
+    message.error(error.message)
     return Promise.reject(error)
   }
 )

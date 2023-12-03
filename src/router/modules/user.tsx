@@ -2,15 +2,20 @@ import { lazyLoad } from '@/utils/router'
 import Layout from '@/layout/index'
 import { AuthRoute } from '@/components/AuthRoute'
 
-const Home = lazy(() => import('@/views/Home/index'))
+const User = lazy(() => import('@/views/User/index'))
+const UserAdd = lazy(() => import('@/views/User/add'))
 
 export default {
-  path: '/',
+  path: '/user',
   element: <AuthRoute><Layout /></AuthRoute>,
   children: [
     {
       index: true,
-      element: lazyLoad(<Home />)
+      element: lazyLoad(<User />)
+    },
+    {
+      path: 'add',
+      element: lazyLoad(<UserAdd />)
     }
   ]
 }

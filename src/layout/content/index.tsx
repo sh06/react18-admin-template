@@ -8,6 +8,7 @@ const ContentContainer = () => {
   return (
     <>
       <Content className={styles.content}>
+        <Outlet />
         <div>
           <p>long content</p>
           {

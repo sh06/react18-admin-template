@@ -1,8 +1,9 @@
 import { Card, Form, Input, Button, message } from 'antd'
-import { userLogin } from '@/store/modules/auth';
+import { setToken } from '@/store/modules/auth';
 import { useDispatch } from'react-redux'
 import { AppDispatch } from '@/types/store';
 import './index.scss'
+import { reqLogin } from '@/apis/auth';
 
 const Login = () => {
   type FieldType = {
@@ -17,9 +18,11 @@ const Login = () => {
   const dispatch = useAppDispatch()
 
   const onLogin = async (values: FieldType) => {
-    await dispatch(userLogin(values))
-    navigate('/')
-    message.success('登录成功')
+    reqLogin(values).then(res => {
+      dispatch(setToken(res.data))
+      navigate('/')
+      message.success('登录成功')
+    })
   }
 
   const onLoginFailed = () => {
