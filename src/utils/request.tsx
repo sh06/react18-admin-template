@@ -27,6 +27,7 @@ http.interceptors.request.use((config) => {
     })
   }
 })
+
 /** 响应拦截器 */
 http.interceptors.response.use(
   (response) => {

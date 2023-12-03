@@ -1,0 +1,14 @@
+.sidebar {
+    overflow: auto;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    min-width: $layout-sidebar-width !important;
+    max-width: $layout-sidebar-width !important;
+
+    &Menu {
+        margin-top: $layout-header-height;
+    }
+}

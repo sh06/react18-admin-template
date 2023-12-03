@@ -24,3 +24,7 @@ export function getAuthItem(key: string) {
 export function getAuthToken() {
   return getAuthItem('token')
 }
+
+export function getAuthUserName() {
+  return getAuthItem('username')
+}

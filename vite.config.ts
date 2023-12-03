@@ -23,6 +23,14 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname,'src')
       }
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "./src/assets/style/variables.scss" as *;`,
+          javascriptEnabled: true
+        }
+      }
+    },
     server: {
       proxy: {
         [env.VITE_APP_BASE_API]: {

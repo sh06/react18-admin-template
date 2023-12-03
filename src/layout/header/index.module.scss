@@ -1,0 +1,39 @@
+.header {
+  position: 'fixed';
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  align-items: center;
+  height: $layout-header-height;
+  line-height: $layout-header-height;
+  background-color: $layout-header-background;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+
+  &Left {
+    height: $layout-header-height;
+    line-height: $layout-header-height;
+    display: flex;
+    align-items: center;
+
+    &Logo {
+      cursor: pointer;
+    }
+  }
+
+  &Left > div {
+    padding: 0 15px;
+  }
+
+  &Right {
+    height: $layout-header-height;
+    line-height: $layout-header-height;
+    display: flex;
+    align-items: center;
+
+    &Menu {
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+}
