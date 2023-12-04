@@ -1,4 +1,3 @@
-import { lazyLoad } from '@/utils/router'
 import { UserOutlined } from '@ant-design/icons'
 
 const Index = lazy(() => import('@/views/index'))
@@ -19,7 +18,7 @@ export default {
       children: [
         {
           index: true,
-          element: lazyLoad(<PermissionMenu />),
+          element: <PermissionMenu />,
           permission: 'PERMISSION_MENU',
         }
       ]
@@ -31,7 +30,7 @@ export default {
       children: [
         {
           index: true,
-          element: lazyLoad(<PermissionRole />),
+          element: <PermissionRole />,
           permission: 'PERMISSION_ROLE',
         }
       ]

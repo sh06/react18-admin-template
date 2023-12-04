@@ -1,4 +1,3 @@
-import { lazyLoad } from '@/utils/router'
 import Layout from '@/layout/index'
 import { AuthRoute } from '@/components/AuthRoute'
 import { DashboardOutlined } from '@ant-design/icons'
@@ -13,9 +12,15 @@ export default {
   children: [
     {
       index: true,
-      element: lazyLoad(<Home />),
+      element: <Home />,
       icon: <DashboardOutlined />,
       permission: 'PERMISSION_DASHBOARD',
-    } 
+    },
+    {
+      path: 'dashboard',
+      element: <Home />,
+      icon: <DashboardOutlined />,
+      permission: 'PERMISSION_DASHBOARD',
+    }
   ]
 } as RouteConfig

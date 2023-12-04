@@ -6,4 +6,4 @@ const PermissionRole = () => {
   );
 };
 
-export default PermissionRole;
+export default PermissionRole

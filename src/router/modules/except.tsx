@@ -1,7 +1,6 @@
 import { AuthRoute } from '@/components/AuthRoute'
-import { lazyLoad } from '@/utils/router'
 
-const Login = lazy(() => import('@/views/Login/index'))
+import Login from '@/views/Login/index'
 const Error404 = lazy(() => import('@/views/Error/404'))
 
 export default [
@@ -11,6 +10,6 @@ export default [
   },
   {
     path: '*',
-    element: lazyLoad(<Error404 />)
+    element: <Error404 />
   }
 ] as RouteConfig[]

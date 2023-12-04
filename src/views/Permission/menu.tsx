@@ -6,4 +6,4 @@ const PermissionMenu = () => {
   );
 };
 
-export default PermissionMenu;
+export default PermissionMenu

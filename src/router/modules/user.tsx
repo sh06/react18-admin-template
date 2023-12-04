@@ -1,4 +1,3 @@
-import { lazyLoad } from '@/utils/router'
 import { UserOutlined } from '@ant-design/icons'
 
 import Index from '@/views/index'
@@ -22,12 +21,12 @@ export default {
       children: [
         {
           index: true,
-          element: lazyLoad(<UserBackendList />),
+          element: <UserBackendList />,
           permission: 'USER_BACKEND',
         },
         {
           path: 'add',
-          element: lazyLoad(<UserBackendAdd />),
+          element: <UserBackendAdd />,
           permission: 'USER_BACKEND_ADD',
         }
       ]
@@ -39,12 +38,12 @@ export default {
       children: [
         {
           index: true,
-          element: lazyLoad(<UserCustomerList />),
+          element: <UserCustomerList />,
           permission: 'USER_CUSTOMER',
         },
         {
           path: 'add',
-          element: lazyLoad(<UserCustomerAdd />),
+          element: <UserCustomerAdd />,
           permission: 'USER_CUSTOMER_ADD',
         },
       ]

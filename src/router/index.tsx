@@ -34,7 +34,7 @@ routes.push(baseRoute)
 
 // 将 exceptRoute 路由数组加入
 routes = routes.concat(...exceptRoute)
-console.log(routes)
+
 const router = createBrowserRouter(routes as RouteObject[])
 
 export default router
