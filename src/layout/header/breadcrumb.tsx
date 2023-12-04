@@ -5,20 +5,17 @@ import { useMatches } from 'react-router-dom';
 const BreadcrumbContainer = () => {
 
   const match = useMatches()
-  console.log(match)
+  let items = []
+
+  for (let i of match) {
+    items.push({
+      title: <a href={i.pathname}>{i.id}</a>,
+    })
+  }
+
   return (
     <Breadcrumb className={styles.breadcrumb}
-    items={[
-      {
-        title: 'Home',
-      },
-      {
-        title: <a href="">Application List</a>,
-      },
-      {
-        title: 'An Application',
-      },
-    ]}
+    items={items}
   />
   )
 }
