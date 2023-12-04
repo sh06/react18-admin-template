@@ -13,4 +13,4 @@ export default [
     path: '*',
     element: lazyLoad(<Error404 />)
   }
-]
+] as RouteConfig[]

@@ -12,7 +12,6 @@ import {
 } from '@ant-design/icons'
 import Logo from './logo'
 
-
 type MenuItem = Required<MenuProps>['items'][number];
 
 function getItem(
@@ -32,19 +31,20 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem('Option 1', '1', <PieChartOutlined />),
+  getItem('首页', '/', <PieChartOutlined />),
 
-  getItem('Navigation One', 'sub1', <MailOutlined />, [
-    getItem('Option 5', '5'),
-    getItem('Option 6', '6'),
-    getItem('Option 7', '7'),
-    getItem('Option 8', '8'),
+  getItem('系统管理', '/system', <MailOutlined />, [
+    getItem('用户管理', '/user'),
   ]),
 
   getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
     getItem('Option 9', '9'),
   ]),
 ];
+
+const onClickMenu = (menu) => {
+  console.log(menu.key)
+}
 
 type SidebarProps = {
   collapsed: boolean
@@ -63,6 +63,7 @@ const SidebarContainer = ({
         mode="inline"
         theme="dark"
         items={items}
+        onClick={onClickMenu}
       />
     </Sider>
   )
